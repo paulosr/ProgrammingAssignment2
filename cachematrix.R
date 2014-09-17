@@ -45,7 +45,7 @@
 #' The functions for CacheMatrix generation and system solve are followings:
 #' \describe {
 #'  \item {\code{\link{makeCacheMatrix}}} {Create a CacheMatrix}
-#'  \item {\code{\link{cacheSolve}}       {Solves matrix system}
+#'  \item {\code{\link{cacheSolve}}}      {Solves matrix system}
 #' }
 #'
 #' The CacheMatrix object type has the following set of methods
@@ -57,8 +57,8 @@
 #' }
 #'
 #' @examples
-#' >  \code{X <- \{link{makeCacheMatrix}( matrix(c(1,2,3,1), 2, 2) )}
-#' >  \code{X$\{link{get}()}
+#' >  \code{X <- \link{makeCacheMatrix}( matrix(c(1,2,3,1), 2, 2) )}
+#' >  \code{X$\link{get}()}
 #'      [,1] [,2]
 #' [1,]    1    3
 #' [2,]    2    1
@@ -77,6 +77,10 @@
 #' [1,] -0.2  0.6
 #' [2,]  0.4 -0.2
 #'
+#' @references \url{https://github.com/rdpeng/ProgrammingAssignment2/blob/master/README.md}
+#' @author Paulo Santiago Ribeiro 
+#'
+#' @name cachematrix 
 NULL
 
 #' Create an object containing a matrix and which may cache 
@@ -130,14 +134,14 @@ makeCacheMatrix <- function(x = matrix()) {
         #'   CacheMatrixInv <- CacheMatrix$getinv()
         getinv <- function() cached 
 
-        list(set = set, get = get,   ##! returns special matrix object 
+        list(set = set, get = get,   ## returns special matrix object 
              setinv = setinv,
              getinv = getinv)
 }
 
 
-#' Provides the inverse matrix \code{Ainv} which solves the system 
-#' \code{y = A %*% x} so that \code{x = Ainv %*% y }
+#' Provides the inverse of matrix which solves the system 
+#' y = A %*% x    so that     x = Ainv %*% y
 #' This function first looks for a cached result so that it may
 #' skip the calculation process already done
 #'
@@ -146,8 +150,9 @@ makeCacheMatrix <- function(x = matrix()) {
 #' @inheritParams solve
 #' @return    inverse of matrix x
 #' @seealso \code{\link{solve}}
-#' @section Warning
+#' @section Warning:
 #'   its assumed that the matrix supplied is always invertible.
+#'
 cacheSolve <- function(x, ...) {
 
         # try to obtain an previously calculated inverse
