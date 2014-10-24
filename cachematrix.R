@@ -4,7 +4,9 @@
 #
 # The functions for CacheMatrix generation and system solve are followings:
 #   * makeCacheMatrix  - Creates a CacheMatrix
-#   * cacheSolve       - Returns matrix system solution
+#   * cacheSolve       - Returns matrix system solution 
+#                       (assumed that the matrix supplied is always invertible)
+
 #
 # The CacheMatrix object type has the following set of methods
 #   set( matrix() )    - stores a new matrix
